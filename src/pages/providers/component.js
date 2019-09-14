@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 
-import { Wrap } from './styled';
-
-export default class Auth extends Component {
+export default class Providers extends Component {
   render() {
     return (
-      <Wrap>
-        Auth
-      </Wrap>
+      <div>
+        Providers
+      </div>
     )
   }
 }

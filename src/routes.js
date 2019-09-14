@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import { Route, Switch } from "react-router";
 
-import App from "./App";
+import Wrapper from "./components/wrapper/view";
 import Auth from "./pages/auth/container";
 import Search from "./pages/search/container";
 import Result from "./pages/result/container";
@@ -9,18 +9,24 @@ import History from "./pages/history/container";
 import Providers from "./pages/providers/container";
 import Settings from "./pages/settings_page/container";
 
-export default function (store) {
-  console.log(store);
+export default class MenuView extends Component {
+  render() {
+    console.log(this.props);
 
-  return (
-    <Switch>
-      <Route exact path="/" component={App} />
-      <Route path="/auth" component={Auth} />
-      <Route path="/search" component={Search} />
-      <Route path="/result" component={Result} />
-      <Route path="/history" component={History} />
-      <Route path="/providers" component={Providers} />
-      <Route path="/settings" component={Settings} />
-    </Switch>
-  )
-};
+    return (
+      <Switch>
+        <Route exact path="/" component={Auth} />
+        <Route path="/auth" component={Auth} />
+        {window.location.path !== "/auth" && 
+          <Wrapper history={this.props.history}>
+            <Route path="/search" component={Search} />
+            <Route path="/result" component={Result} />
+            <Route path="/history" component={History} />
+            <Route path="/providers" component={Providers} />
+            <Route path="/settings" component={Settings} />
+          </Wrapper>
+        }
+      </Switch>
+    )
+  };
+}

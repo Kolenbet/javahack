@@ -9,6 +9,7 @@ import Routes from "./routes";
 import createHistory from "history/createBrowserHistory";
 import { Router } from "react-router";
 import { routerReducer, routerMiddleware } from "react-router-redux";
+import './index.css';
 
 const history = createHistory();
 const sagaMiddleware = createSagaMiddleware();
@@ -24,7 +25,7 @@ const store = createStore(
 render(
   <Provider store={store}>
     <Router history={history}>
-      <Routes store={store} />
+      <Routes store={store} history={history} />
     </Router>
   </Provider>,
   document.getElementById("root")

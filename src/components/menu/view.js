@@ -1,25 +1,33 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import { Wrap, Logo, MenuItem, Menu } from "./styled";
+import { Wrap, Logo, MenuItem, Menu, MenuItemLogo } from "./styled";
 import routes from "./routes";
-
-const logo = require('./assets/logo.svg');
+import logo from './assets/raif.png';
 
 export default class MenuView extends Component {
   render() {
-    console.log(routes);
+    console.log(routes, this.props);
 
     return (
       <Wrap>
-        <Logo logo={logo}/>
+        <Logo logo={logo} />
         <Menu>
-          {routes.map(item => 
-            <MenuItem key={item.path} selected={item.path === window.location.pathname}>
-              {item.title}
-            </MenuItem>
-          )}
+          {routes.map(item => {
+            const isSelected = item.path === window.location.pathname;
+            console.log(isSelected);
+            return (
+              <MenuItem
+                key={item.path}
+                onClick={() => this.props.history.push(item.path)}
+                selected={isSelected}
+              >
+                <MenuItemLogo icon={isSelected ? item.activeIcon : item.inactiveIcon}/>
+                {item.title}
+              </MenuItem>
+            );
+          })}
         </Menu>
       </Wrap>
-    )
+    );
   }
 }

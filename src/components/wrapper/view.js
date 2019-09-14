@@ -5,9 +5,10 @@ import Menu from '../menu/view';
 
 export default class Wrapper extends Component {
   render() {
+    console.log(this.props);
     return (
       <Wrap>
-        <Menu />
+        <Menu history={this.props.history}/>
         {this.props.children}
       </Wrap>
     )
