@@ -6,15 +6,13 @@ import logo from './assets/raif.png';
 
 export default class MenuView extends Component {
   render() {
-    console.log(routes, this.props);
-
     return (
       <Wrap>
         <Logo logo={logo} />
         <Menu>
           {routes.map(item => {
             const isSelected = item.path === window.location.pathname;
-            console.log(isSelected);
+
             return (
               <MenuItem
                 key={item.path}

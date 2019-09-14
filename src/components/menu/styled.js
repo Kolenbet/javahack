@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Wrap = styled.div`
   position: fixed;
+  z-index: 100;
   left: 0;
   top: 0;
   height: 100vh;
