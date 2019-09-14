@@ -9,8 +9,8 @@ export const Wrap = styled.div`
   align-items: center;
   padding: 10px;
   text-align: center;
-  width: 150px;
-  height: 130px;
+  width: 190px;
+  height: 110px;
   margin-right: 25px;
   margin-bottom: 20px;
   border-radius: 20px;

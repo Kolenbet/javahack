@@ -123,6 +123,7 @@ export const Button = styled.button`
   position: fixed;
   bottom: 20px;
   width: 300px;
+  border: none;
   left: 40%;
   z-index: 50;
   height: 46px;

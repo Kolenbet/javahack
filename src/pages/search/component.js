@@ -23,7 +23,7 @@ export default class Search extends Component {
 
   render() {
     const { currentStep } = this.state;
-    console.log(this.state);
+
     return (
       <Wrap>
         <Header>Автозакупки</Header>

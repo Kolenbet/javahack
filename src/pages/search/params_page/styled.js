@@ -24,6 +24,7 @@ export const Input = styled.textarea`
 export const Button = styled.button`
   height: 46px;
   border-radius: 14px;
+  border: none;
   background-color: #65ef9a;
   color: #fff;
   font-size: 18px;
