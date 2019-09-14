@@ -1,9 +1,6 @@
 import searchActiveLogo from './assets/search-active.png';
 import searchLogo from './assets/search.png';
 
-import searchResultActiveLogo from './assets/search-results-active.png';
-import searchResultLogo from './assets/search-results.png';
-
 import historyActiveLogo from './assets/history-active.png';
 import historyLogo from './assets/history.png';
 
@@ -19,12 +16,6 @@ export default [
     title: "Поиск",
     activeIcon: searchActiveLogo,
     inactiveIcon: searchLogo
-  },
-  {
-    path: "/result",
-    title: "Результаты поиска",
-    activeIcon: searchResultActiveLogo,
-    inactiveIcon: searchResultLogo
   },
   {
     path: "/history",

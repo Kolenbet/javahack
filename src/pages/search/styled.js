@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import arrow from './assets/arrow.png';
+import arrowActive from './assets/arrow-active.png';
+
 export const Wrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,7 +17,7 @@ export const Header = styled.div`
 
 export const Description = styled.div`
   max-width: 630px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   color: #989898;
 `;
 
@@ -39,8 +42,12 @@ export const Breadcrumb = styled.div`
 
   :before {
     position: absolute;
+    top: 40px;
+    right: -20px;
+    width: 100px;
+    height: 30px;
     ${props => props.last && ''}
-    background: url();
+    background: url(${props => props.filled ? arrowActive : arrow});
   }
 `;
 
@@ -53,4 +60,5 @@ export const BreadcrumbWrap = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 40px;
+  ${props => props.filled && 'cursor: pointer'};
 `;

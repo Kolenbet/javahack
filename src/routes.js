@@ -4,7 +4,6 @@ import { Route, Switch } from "react-router";
 import Wrapper from "./components/wrapper/view";
 import Auth from "./pages/auth/container";
 import Search from "./pages/search/container";
-import Result from "./pages/result/container";
 import History from "./pages/history/container";
 import Providers from "./pages/providers/container";
 import Settings from "./pages/settings_page/container";
@@ -20,7 +19,6 @@ export default class MenuView extends Component {
         {window.location.path !== "/auth" && 
           <Wrapper history={this.props.history}>
             <Route path="/search" component={Search} />
-            <Route path="/result" component={Result} />
             <Route path="/history" component={History} />
             <Route path="/providers" component={Providers} />
             <Route path="/settings" component={Settings} />

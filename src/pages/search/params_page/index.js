@@ -14,9 +14,7 @@ import chatLogo from "../assets/chat.png";
 
 import {
   Wrap,
-  Header,
   Title,
-  Description,
   Button,
   Input,
   CheckItemWrap
