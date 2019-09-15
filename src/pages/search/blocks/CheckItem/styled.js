@@ -14,11 +14,11 @@ export const Wrap = styled.div`
   margin-right: 25px;
   margin-bottom: 20px;
   border-radius: 20px;
-  border: #dadada 1px solid;
-  box-shadow: #eaeaea 0px 7px 11px 3px;
+  box-shadow: #eaeaea 0px 5px 11px 3px;
   cursor: pointer;
   transition: all 0.07s 0.07s linear;
 
+  ${props => props.checked && 'border: #6ac259 2px solid;'}
   :hover {
     transform: scale(1.05) translateY(-3px);
   }

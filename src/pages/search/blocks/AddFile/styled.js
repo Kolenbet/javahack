@@ -12,7 +12,7 @@ export const CustomUpload = styled.label`
   border: 1px solid #ccc;
   padding: 6px 12px;
   cursor: pointer;
-  margin-bottom: 30px;
+  margin-bottom: 70px;
   width: 330px;
   height: 46px;
   border-radius: 10px;

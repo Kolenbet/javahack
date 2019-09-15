@@ -10,6 +10,7 @@ import { sendRequests } from "./api/sendRequests";
 
 import {
   Wrap,
+  HeaderBlock,
   Header,
   Description,
   Breadcrumbs,
@@ -17,6 +18,7 @@ import {
   BreadcrumbWrap,
   BreadcrumbText
 } from "./styled";
+import { Button } from "./params_page/styled";
 
 const steps = ["Параметры поиска", "Результаты поиска", "Результаты рассылки"];
 
@@ -39,10 +41,13 @@ export default class Search extends Component {
     const { currentStep, searchData } = this.state;
 
     const queryUid = queryString.parse(window.location.search).queryUid;
-    
+
     return (
       <Wrap>
-        <Header>Робозакупки</Header>
+        <HeaderBlock>
+          <Header>Робозакупки</Header>
+          <Button>Новый поиск</Button>
+        </HeaderBlock>
         <Description>
           Наш сервис поможет вам найти нужного поставщика, автоматически
           обзвонив все релевантные компании в поисках того, что вы ищете

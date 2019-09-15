@@ -15,6 +15,13 @@ export const Header = styled.div`
   font-weight: bold;
 `;
 
+export const HeaderBlock = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+`;
+
 export const Description = styled.div`
   max-width: 630px;
   margin-bottom: 25px;

@@ -15,12 +15,12 @@ export const Text = styled.div`
 
 export const Input = styled.input`
   padding: 2px 10px;
-  box-shadow: 0 0 6px 2px #cecece;
+  box-shadow: 0 0 6px 2px #e4e3e3;
   width: 575px;
   height: 20px;
-  border: #cecece 1px solid;
+  border: #e4e3e3 1px solid;
   font-size: 18px;
-  background: #cecece;
+  background: #e4e3e3;
   margin-top: -4px;
 `;
 
@@ -33,13 +33,14 @@ export const Title = styled.div`
 export const Supplier = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   margin-bottom: 30px;
   box-shadow: 0 10px 20px 2px #d6d6d6;
 `;
 
 export const Info = styled.div`
+  max-width: 600px;
 `;
 
 export const Resource = styled.div`
@@ -57,6 +58,8 @@ export const QrCode = styled.div`
 `;
 
 export const Contacts = styled.div`
+  width: 100%;
+  overflow: hidden;
   margin-left: 20px;
 `;
 
@@ -67,21 +70,23 @@ export const Name = styled.div`
 
 export const Phone = styled.div`
   margin-bottom: 4px;
-  color: #cecece;
+  color: #868686;
 `;
 
 export const Email = styled.div`
   margin-bottom: 4px;
-  color: #cecece;
+  color: #868686;
 `;
 
 export const Site = styled.a`
   display: block;
   margin-bottom: 4px;
   cursor: pointer;
+  color: #3FB2FF;
 `;
 
 export const ContactTypes = styled.div`
+  padding-left: 50px;
 `;
 
 export const ContactCheckbox = styled.div`
@@ -104,7 +109,7 @@ export const ContactType = styled.div`
 `;
 
 export const Good = styled.div`
-  padding: 5px 10px;
+  padding: 5px 25px;
   border-radius: 10px;
   color: #fff;
   font-weight: bold;
@@ -112,22 +117,22 @@ export const Good = styled.div`
 `;
 
 export const Bad = styled.div`
-  padding: 5px 10px;
+  padding: 5px 25px;
   border-radius: 10px;
-  color: #000;
+  color: #fff;
   font-weight: bold;
   background-color: #d14e58;
 `;
 
 export const Button = styled.button`
   position: fixed;
-  bottom: 20px;
-  width: 300px;
+  bottom: 10px;
+  width: 700px;
   border: none;
-  left: 40%;
+  left: 330px;
   z-index: 50;
   height: 46px;
-  border-radius: 14px;
+  border-radius: 25px;
   background-color: #65ef9a;
   color: #fff;
   font-size: 18px;
@@ -138,4 +143,13 @@ export const Button = styled.button`
   :hover {
     transform: translateY(-2px);
   }
+`;
+
+export const Background = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 65px;
+  background-color: #fff;
 `;

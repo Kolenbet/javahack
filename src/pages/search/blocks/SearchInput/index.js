@@ -7,7 +7,7 @@ export default class SearchInput extends Component {
     return (
       <Wrap>
         <Loupe />
-        <Input {...this.props}/>
+        <Input placeholder="Введите интересующий товар" {...this.props}/>
       </Wrap>
     )
   }

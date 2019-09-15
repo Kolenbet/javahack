@@ -20,7 +20,8 @@ import {
   Site,
   Good,
   Bad,
-  Button
+  Button,
+  Background
 } from "./styled";
 
 export default class SearchResult extends Component {
@@ -33,13 +34,13 @@ export default class SearchResult extends Component {
           <Input disabled value={queryString} />
         </Request>
         <Title>
-          Результаты поиска (на основе {engines.map(item => `${item}, `)})
+          Результаты поиска (на основе {engines.map((item, index) => `${item}${index<engines.length-1 ? ', ' : ''}`)})
         </Title>
         {suppliers.map((item, index) => (
           <Supplier key={item.url}>
             <Info>
               <AboutCompany>
-                {item.phone && <QRCode value={item.phone} />}
+                <QRCode value={item.phone || "no_data"} />
                 <Contacts>
                   <Name>{item.name}</Name>
                   <Phone>{item.phone}</Phone>
@@ -69,7 +70,7 @@ export default class SearchResult extends Component {
               </ContactTypes>
             </Info>
             <Resource>
-              {index === 0 ? (
+              {index === suppliers.length - 1 ? (
                 <Good>Проверенный сайт</Good>
               ) : (
                 <Bad>Потенциально опасный сайт</Bad>
@@ -77,20 +78,23 @@ export default class SearchResult extends Component {
             </Resource>
           </Supplier>
         ))}
-        <Button
-          onClick={() =>
-            this.props.onSend(
-              suppliers.map(item => {
-                return {
-                  supplierUid: item.supplierUid,
-                  contactTypes: item.contactTypes
-                };
-              })
-            )
-          }
-        >
-          Запустить рассылку
-        </Button>
+        <Background>
+          <Button
+            disabled={!this.state.queryString}
+            onClick={() =>
+              this.props.onSend(
+                suppliers.map(item => {
+                  return {
+                    supplierUid: item.supplierUid,
+                    contactTypes: item.contactTypes
+                  };
+                })
+              )
+            }
+          >
+            Запустить рассылку
+          </Button>
+        </Background>
       </div>
     );
   }

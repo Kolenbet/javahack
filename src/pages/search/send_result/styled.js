@@ -43,10 +43,13 @@ export const Info = styled.div`
 export const Resource = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 0 0 auto;
+  padding-right: 40px;
 `;
 
 export const AboutCompany = styled.div`
   display: flex;
+  max-width: 500px;
   margin-bottom: 20px;
 `;
 
@@ -56,6 +59,9 @@ export const QrCode = styled.div`
 
 export const Contacts = styled.div`
   margin-left: 20px;
+  width: 100%;
+  overflow: hidden;
+  word-break: break-word;
 `;
 
 export const Name = styled.div`
@@ -80,7 +86,7 @@ export const Site = styled.a`
 `;
 
 export const Good = styled.div`
-  padding: 5px 10px;
+  padding: 5px 25px;
   border-radius: 10px;
   color: #fff;
   font-weight: bold;
@@ -88,9 +94,9 @@ export const Good = styled.div`
 `;
 
 export const Bad = styled.div`
-  padding: 5px 10px;
+  padding: 5px 25px;
   border-radius: 10px;
-  color: #000;
+  color: #fff;
   font-weight: bold;
   background-color: #d14e58;
 `;

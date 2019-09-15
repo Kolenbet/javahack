@@ -6,7 +6,8 @@ export const Wrap = styled.div`
 `;
 
 export const Title = styled.div`
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 25px;
   font-size: 24px;
   font-weight: bold;
 `;
@@ -23,7 +24,8 @@ export const Input = styled.textarea`
 
 export const Button = styled.button`
   height: 46px;
-  border-radius: 14px;
+  padding: 0 35px;
+  border-radius: 25px;
   border: none;
   background-color: #65ef9a;
   color: #fff;
