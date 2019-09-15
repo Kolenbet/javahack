@@ -20,7 +20,13 @@ import {
   Email,
   Site,
   Good,
-  Bad
+  Bad,
+  Button,
+  AnswerTitle,
+  WrapInfo,
+  AnswersWrap,
+  AnswerTextArea,
+  Answers,
 } from "./styled";
 
 export default class SendResult extends Component {  state = {};
@@ -59,22 +65,33 @@ export default class SendResult extends Component {  state = {};
         </Title>
         {suppliers ? suppliers.map(item => (
           <Supplier key={item.url}>
-            <Info>
-              <AboutCompany>
-                {item.phone && <QRCode value={item.phone} />}
-                <Contacts>
-                  <Name>{item.name}</Name>
-                  <Phone>{item.phone}</Phone>
-                  <Email>{item.email}</Email>
-                  <Site>{item.url}</Site>
-                </Contacts>
-              </AboutCompany>
-            </Info>
-            <Resource>
-              {item.status === "OK_ITEM" && <Good>У них есть товар</Good>} 
-              {item.status === "NO_ITEM" && <Bad>Нет товара</Bad>}
-              {item.status === "NO_RESPONSE" && <Bad>Нет ответа</Bad>}
-            </Resource>
+            <WrapInfo>
+              <Info>
+                <AboutCompany>
+                  {item.phone && <QRCode value={item.phone} />}
+                  <Contacts>
+                    <Name>{item.name}</Name>
+                    <Phone>{item.phone}</Phone>
+                    <Email>{item.email}</Email>
+                    <Site>{item.url}</Site>
+                  </Contacts>
+                </AboutCompany>
+              </Info>
+              <Resource>
+                {item.status === "OK_ITEM" && <Good>У них есть товар</Good>} 
+                {item.status === "NO_ITEM" && <Bad>Нет товара</Bad>}
+                {item.status === "NO_RESPONSE" && <Bad>Нет ответа</Bad>}
+              </Resource>
+            </WrapInfo>
+            <AnswersWrap>
+            {item.answers && item.answers.map(answer => 
+              <Answers>
+                <AnswerTitle>{answer.contactType === "CALL" ? "Что ответили по телефону?" : "Что ответили в письме?"}</AnswerTitle>
+                <AnswerTextArea>{answer.message}</AnswerTextArea>
+                <Button href={`tel:${item.phone}`}>Ответить</Button>
+              </Answers>
+              )}
+            </AnswersWrap>
           </Supplier>
         )) :
         <div>loading</div>}

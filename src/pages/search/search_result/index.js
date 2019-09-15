@@ -26,7 +26,7 @@ import {
 
 export default class SearchResult extends Component {
   render() {
-    const { engines, queryString, suppliers } = this.props;
+    const { engines, queryString, suppliers, setState } = this.props;
     return (
       <div>
         <Request>
@@ -34,7 +34,11 @@ export default class SearchResult extends Component {
           <Input disabled value={queryString} />
         </Request>
         <Title>
-          Результаты поиска (на основе {engines.map((item, index) => `${item}${index<engines.length-1 ? ', ' : ''}`)})
+          Результаты поиска (на основе{" "}
+          {engines.map(
+            (item, index) => `${item}${index < engines.length - 1 ? ", " : ""}`
+          )}
+          )
         </Title>
         {suppliers.map((item, index) => (
           <Supplier key={item.url}>
@@ -49,7 +53,26 @@ export default class SearchResult extends Component {
                 </Contacts>
               </AboutCompany>
               <ContactTypes>
-                <ContactType onClick={() => console.log(22)}>
+                <ContactType
+                  onClick={() => {
+                    let newsup = suppliers.map(supp => {
+                      if (item.supplierUid === supp.supplierUid) {
+                        console.log(item, supp);
+                        const contactTypes = supp.contactTypes;
+                        const indexOf =
+                          contactTypes.indexOf("CALL") !== -1;
+                        if (indexOf) {
+                          contactTypes.splice(suppliers.indexOf(supp.key), 1);
+                        } else {
+                          contactTypes.push("CALL");
+                        }
+                        return {...item, contactTypes}
+                      } else return item
+                    });
+                    console.log(newsup);
+                    setState({suppliers: newsup});
+                  }}
+                >
                   <ContactCheckbox
                     active={item.contactTypes.indexOf("CALL") !== -1}
                   />
@@ -80,7 +103,7 @@ export default class SearchResult extends Component {
         ))}
         <Background>
           <Button
-            disabled={!this.state.queryString}
+            disabled={!this.props.queryString}
             onClick={() =>
               this.props.onSend(
                 suppliers.map(item => {

@@ -31,6 +31,7 @@ export const Title = styled.div`
 export const Supplier = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 30px;
@@ -44,7 +45,6 @@ export const Resource = styled.div`
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
-  padding-right: 40px;
 `;
 
 export const AboutCompany = styled.div`
@@ -106,8 +106,43 @@ export const AnswerWrap = styled.div`
   font-weight: bold;
 `;
 
-export const AnswerTextArea = styled.textarea`
+export const AnswerTextArea = styled.div`
+  border: #cecece 1px solid;
+  border-radius: 10px;
+  padding: 20px;
+  color: #827d7d;
+  margin-bottom: 10px;
 `;
 
-export const Button = styled.button`
+export const Button = styled.a`
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  max-width: 100%;
+  border: #17b50d 2px solid;
+  border-radius: 24px;
+  padding: 5px;
+  font-size: 17px;
+  color: #17b50d;
+  font-weight: bold;
+  cursor: pointer;
+`;
+
+export const Answers = styled.div`
+  max-width: 50%;
+`;
+
+export const AnswersWrap = styled.div`
+  display: flex;
+`;
+
+export const AnswerTitle = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+`;
+
+export const WrapInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

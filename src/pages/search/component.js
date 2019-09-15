@@ -91,6 +91,7 @@ export default class Search extends Component {
                 this.props.history.push(`?queryUid=${searchData.queryUid}`)
               });
             }}
+            setState={this.setState.bind(this)}
             {...searchData}
           />
         )}
