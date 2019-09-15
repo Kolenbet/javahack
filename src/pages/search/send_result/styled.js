@@ -44,6 +44,7 @@ export const Info = styled.div`
 export const Resource = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 20px;
   flex: 0 0 auto;
 `;
 

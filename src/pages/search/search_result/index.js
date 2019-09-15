@@ -53,26 +53,7 @@ export default class SearchResult extends Component {
                 </Contacts>
               </AboutCompany>
               <ContactTypes>
-                <ContactType
-                  onClick={() => {
-                    let newsup = suppliers.map(supp => {
-                      if (item.supplierUid === supp.supplierUid) {
-                        console.log(item, supp);
-                        const contactTypes = supp.contactTypes;
-                        const indexOf =
-                          contactTypes.indexOf("CALL") !== -1;
-                        if (indexOf) {
-                          contactTypes.splice(suppliers.indexOf(supp.key), 1);
-                        } else {
-                          contactTypes.push("CALL");
-                        }
-                        return {...item, contactTypes}
-                      } else return item
-                    });
-                    console.log(newsup);
-                    setState({suppliers: newsup});
-                  }}
-                >
+                <ContactType>
                   <ContactCheckbox
                     active={item.contactTypes.indexOf("CALL") !== -1}
                   />
@@ -93,7 +74,7 @@ export default class SearchResult extends Component {
               </ContactTypes>
             </Info>
             <Resource>
-              {index === suppliers.length - 1 ? (
+              {index !== suppliers.length - 1 ? (
                 <Good>Проверенный сайт</Good>
               ) : (
                 <Bad>Потенциально опасный сайт</Bad>

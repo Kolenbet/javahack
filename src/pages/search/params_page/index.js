@@ -58,7 +58,7 @@ export default class Search extends Component {
     queryString: "",
     engines: [],
     contactTypes: [],
-    message: "Добрый день, подскажите пожалуйста можно ли у вас приобрести мёд?",
+    message: "Здравствуйте, мы компания ООО Ромашка, прошу прислать коммерческое предложение, если у вас имеется",
   };
 
   onCheck = (arrName, item) => {

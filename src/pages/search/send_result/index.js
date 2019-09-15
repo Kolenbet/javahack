@@ -68,7 +68,7 @@ export default class SendResult extends Component {  state = {};
             <WrapInfo>
               <Info>
                 <AboutCompany>
-                  {item.phone && <QRCode value={item.phone} />}
+                  <QRCode value={item.phone || "no_data"} />
                   <Contacts>
                     <Name>{item.name}</Name>
                     <Phone>{item.phone}</Phone>
