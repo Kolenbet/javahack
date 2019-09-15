@@ -28,7 +28,7 @@ export default class Settings extends Component {
 
     return (
       <Wrap>
-        <Header>Автозакупки</Header>
+        <Header>Робозакупки</Header>
         <Description>
           Наш сервис поможет вам найти нужного поставщика, автоматически
           обзвонив все релевантные компании в поисках того, что вы ищете

@@ -5,6 +5,7 @@
   "dependencies": {
     "history": "^4.10.1",
     "qrcode.react": "^0.9.3",
+    "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",

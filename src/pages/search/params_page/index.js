@@ -22,32 +22,32 @@ import {
 
 const searchSrc = [
   {
-    key: "yandex",
+    key: "YANDEX",
     img: yandexLogo
   },
   {
-    key: "google",
+    key: "GOOGLE",
     img: googleLogo
   },
   {
-    key: "avito",
+    key: "AVITO",
     img: avitoLogo
   }
 ];
 
 const howToSearchSrc = [
   {
-    key: "phone",
+    key: "CALL",
     img: phoneLogo,
     description: "Автоматический обзвон"
   },
   {
-    key: "email",
+    key: "EMAIL",
     img: emailLogo,
     description: "Автоматическая email рассылка"
   },
   {
-    key: "chat",
+    key: "MESSENGER",
     img: chatLogo,
     description: "Спросить в мессенджере"
   }
@@ -55,11 +55,10 @@ const howToSearchSrc = [
 
 export default class Search extends Component {
   state = {
-    searchQuery: "",
+    queryString: "",
     engines: [],
-    contactType: [],
-    message: "",
-    file: ""
+    contactTypes: [],
+    message: "Добрый день, подскажите пожалуйста можно ли у вас приобрести мёд?",
   };
 
   onCheck = (arrName, item) => {
@@ -92,11 +91,11 @@ export default class Search extends Component {
   }
 
   render() {
-    const { searchQuery, engines, contactType, message, file } = this.state;
+    const { queryString, engines, contactTypes, message, file } = this.state;
     console.log(this.state);
     return (
       <Wrap>
-        <SearchInput query={searchQuery} onChange={e => this.setState({searchQuery: e.target.value})} />
+        <SearchInput query={queryString} onChange={e => this.setState({queryString: e.target.value})} />
 
         <Title>Где искать?</Title>
         <CheckItemWrap>
@@ -115,9 +114,9 @@ export default class Search extends Component {
           {howToSearchSrc.map(item => (
             <CheckItem
               key={item.key}
-              checked={contactType.indexOf(item.key) !== -1}
+              checked={contactTypes.indexOf(item.key) !== -1}
               item={item}
-              onClick={() => this.onCheck("contactType", item)}
+              onClick={() => this.onCheck("contactTypes", item)}
             />
           ))}
         </CheckItemWrap>
@@ -149,7 +148,7 @@ export default class Search extends Component {
           }}
         />
 
-        <Button onClick={() => this.props.onSend()}>Запустить поиск</Button>
+        <Button onClick={() => this.props.onSend(this.state)}>Запустить поиск</Button>
       </Wrap>
     );
   }

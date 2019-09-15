@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import queryString from "query-string";
 
 import ParamsPage from "./params_page";
 import SearchResult from "./search_result";
 import SendResult from "./send_result";
+
+import { startSearch } from "./api/startSearch";
+import { sendRequests } from "./api/sendRequests";
 
 import {
   Wrap,
@@ -18,15 +22,27 @@ const steps = ["Параметры поиска", "Результаты поис
 
 export default class Search extends Component {
   state = {
-    currentStep: 1
+    currentStep: 0,
+    loading: false,
+    searchData: {},
   };
 
-  render() {
-    const { currentStep } = this.state;
+  componentDidMount() {
+    const queryUid = queryString.parse(window.location.search).queryUid;
 
+    if (queryUid) {
+      this.setState({currentStep: 2});
+    }
+  }
+  
+  render() {
+    const { currentStep, searchData } = this.state;
+
+    const queryUid = queryString.parse(window.location.search).queryUid;
+    
     return (
       <Wrap>
-        <Header>Автозакупки</Header>
+        <Header>Робозакупки</Header>
         <Description>
           Наш сервис поможет вам найти нужного поставщика, автоматически
           обзвонив все релевантные компании в поисках того, что вы ищете
@@ -38,7 +54,7 @@ export default class Search extends Component {
             return (
               <BreadcrumbWrap
                 key={item}
-                onClick={() => filled && this.setState({ currentStep: index })}
+                onClick={() => filled && this.state.currentStep !== 2 && this.setState({ currentStep: index })}
                 filled={filled}
               >
                 <Breadcrumb last={index === steps.length - 1} filled={filled}>
@@ -49,21 +65,31 @@ export default class Search extends Component {
             );
           })}
         </Breadcrumbs>
-        {currentStep === 0 && (
+        {currentStep === 0 && !queryUid && (
           <ParamsPage
             onSend={data => {
-              this.setState({ currentStep: 1 });
+              this.setState({ loading: true });
+              startSearch(data).then(searchData => {
+                this.setState({ loading: false, currentStep: 1, searchData });
+              });
             }}
           />
         )}
-        {currentStep === 1 && (
+        {currentStep === 1 && !queryUid && (
           <SearchResult
             onSend={data => {
-              this.setState({ currentStep: 2 });
+              this.setState({ loading: true });
+              sendRequests(data).then(sendRequestsData => {
+                this.setState({
+                  loading: false,
+                });
+                this.props.history.push(`?queryUid=${searchData.queryUid}`)
+              });
             }}
+            {...searchData}
           />
         )}
-        {currentStep === 2 && <SendResult />}
+        {queryUid && <SendResult />}
       </Wrap>
     );
   }

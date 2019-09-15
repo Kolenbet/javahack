@@ -25,51 +25,21 @@ import {
 
 export default class SearchResult extends Component {
   render() {
+    const { engines, queryString, suppliers } = this.props;
     return (
       <div>
         <Request>
           <Text>Запрос:</Text>
-          <Input disabled value={"efef"} />
+          <Input disabled value={queryString} />
         </Request>
         <Title>
-          Результаты поиска (на основе {[].map(item => `${item}, `)})
+          Результаты поиска (на основе {engines.map(item => `${item}, `)})
         </Title>
-        {[
-          {
-            email: "string",
-            name: "string",
-            phone: "string",
-            url: "string"
-          },
-          {
-            email: "string",
-            name: "string",
-            phone: "string",
-            url: "string"
-          },
-          {
-            email: "string",
-            name: "string",
-            phone: "string",
-            url: "string"
-          },
-          {
-            email: "string",
-            name: "string",
-            phone: "string",
-            url: "string"
-          },
-          {
-            email: "string",
-            name: "string",
-            phone: "string",
-            url: "string"
-          },
-        ].map((item, index) => (
+        {suppliers.map((item, index) => (
           <Supplier key={item.url}>
             <Info>
               <AboutCompany>
-                <QRCode value={"89277476998"} />
+                {item.phone && <QRCode value={item.phone} />}
                 <Contacts>
                   <Name>{item.name}</Name>
                   <Phone>{item.phone}</Phone>
@@ -79,15 +49,21 @@ export default class SearchResult extends Component {
               </AboutCompany>
               <ContactTypes>
                 <ContactType onClick={() => console.log(22)}>
-                  <ContactCheckbox />
+                  <ContactCheckbox
+                    active={item.contactTypes.indexOf("CALL") !== -1}
+                  />
                   Автоматический обзвон
                 </ContactType>
                 <ContactType onClick={() => console.log(22)}>
-                  <ContactCheckbox />
+                  <ContactCheckbox
+                    active={item.contactTypes.indexOf("EMAIL") !== -1}
+                  />
                   Автоматическая email рассылка
                 </ContactType>
                 <ContactType onClick={() => console.log(22)}>
-                  <ContactCheckbox />
+                  <ContactCheckbox
+                    active={item.contactTypes.indexOf("MESSENGER") !== -1}
+                  />
                   Автоматическая рассылка в мессенджеры
                 </ContactType>
               </ContactTypes>
@@ -101,7 +77,20 @@ export default class SearchResult extends Component {
             </Resource>
           </Supplier>
         ))}
-        <Button onClick={() => this.props.onSend({})}>Запустить рассылку</Button>
+        <Button
+          onClick={() =>
+            this.props.onSend(
+              suppliers.map(item => {
+                return {
+                  supplierUid: item.supplierUid,
+                  contactTypes: item.contactTypes
+                };
+              })
+            )
+          }
+        >
+          Запустить рассылку
+        </Button>
       </div>
     );
   }
