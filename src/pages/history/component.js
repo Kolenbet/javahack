@@ -21,7 +21,6 @@ export default class History extends Component {
   componentDidMount() {
     getHistory()
       .then(data => {
-        console.log(data);
         this.setState({history: data});
       })
   }

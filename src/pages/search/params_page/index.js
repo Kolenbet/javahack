@@ -77,7 +77,6 @@ export default class Search extends Component {
   componentDidMount() {
     document.querySelector('#file-upload').addEventListener('change', function() {
       const reader = new FileReader();
-      console.log('tests');
       reader.onload = function() {
         const arrayBuffer = this.result;
         const array = new Uint8Array(arrayBuffer);
