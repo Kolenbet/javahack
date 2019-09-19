@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Wrap, Logo, MenuItem, Menu, MenuItemLogo } from "./styled";
 import routes from "./routes";
-import logo from './assets/raif.png';
+import logo from './assets/logo.png';
 
 export default class MenuView extends Component {
   render() {
